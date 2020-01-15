@@ -1,0 +1,48 @@
+\section{Ensemble Methods}
+\textcolor{blue}{\textbf{Ensemble methods}} is combine the predictions of several models built with a learning algorithm in order to imrpopve with respect to the use of single model.\\
+There are families methods:
+\begin{enumerate}
+    \item \textcolor{red}{\textbf{Averaging techniques}}: you will grow several models independently and simply average their predictions.( \textcolor{red}{\textbf{Decrease variance}})\\
+    \Example : Bagging, Random Forest, ...\\
+    \item  \textcolor{red}{\textbf{Boosting type algorithms}}: You grow several models sequentially.  \textcolor{red}{\textbf{Decrease \Biais}}\\
+    \Example: Adaboost,...
+\end{enumerate}
+% -------------------------------- Bagging ----------------------------------
+\subsection{Bagging}
+We divide a \textbf{LS} in a sum of $\textbf{LS}_i$. Since bagging is an "\textbf{averaging techniques}", we know that the \variance must be decrease and they are no effect on the \biais.\\
+So we will compute the averge model :$$\hat{y}_{ens}(\textbf{x}) = \frac{1}{T}\sum_{i=1}^{T}\hat{y}_{LS_i}(\textbf{x})$$
+Since tradeoff \biais \& \variance, 
+$$ E = 
+ \textcolor{blue}{E_{\overline{x}}\{VAR_{y|\overline{x}}\{y\}\}}
++ \textcolor{teal}{ E_{\overline{x}}\{Bias^2(\overline{x}\}}
++  \textcolor{red}{ E_{\overline{x}}\{VAR_{LS}\{\hat{y}(\overline{x}\}\} }
+$$
+we can do maths:
+\begin{itemize}
+    \item The \biais : 
+    $ \textcolor{teal}{ E_{\underline{x}}\{E_{y|x}\{y\}\}- \{E_{LS}\{\hat{y}_{ens}\{\underline{x}\}\}} $
+    \begin{itemize}
+        \item $ \textcolor{teal}{\{E_{y|x}\{y\}\}}$ remains unchanged (Bayes model)
+        \item  $ \textcolor{teal}{E_{LS}\{\hat{y}_{ens}\{\underline{x}\}}
+        = {E_{LS}\{\frac{1}{T}\sum_{i=1}^{T}\hat{y}_{LS_i}(\textbf{x})\} = {E_{LS}\{\hat{y}_{LS}(\underline{x})\} $, also remains unchanged
+    \end{itemize}
+    \item The \variance :  $ \textcolor{red}{ E_{\underline{x}}\{E_{LS}\{(\hat{y}_{ens}\{\underline{x}\}- \{E_{LS}\{\hat{y}_{ens}\{\underline{x}\}\})^2\}} $
+     \begin{itemize}
+        \item $ \textcolor{red}{E_{LS}\{(\frac{1}{T}\sum_{i=1}^{T}\hat{y}_{LS_i}(\textbf{x})- \{E_{LS}\{\frac{1}{T}\sum_{i=1}^{T}\hat{y}_{LS_i}(\textbf{x})\}\})^2\}} $\\
+        \item As we can seen, the fist part of the obove equation, devide the \variance per T
+    \end{itemize}
+    
+\end{itemize}
+\textbf{But} in practice, we can not draw several \textbf{LS} because proba distribution is unkknown. \textcolor{blue}{Use of "\textbf{Boostmap sampling}"}
+% -------------------------------- Random Forest ----------------------------------
+\subsection{Random Forest}
+\textbf{Random forest} = \textbf{Bagging} + \textbf{Random attribtute subset selection}
+\begin{enumerate}
+    \item Build the tree from \textbf{Boostmap sample}
+    \item Instead of choosing best split among all a attributes
+\end{enumerate}
+% -------------------------------- Boosting ---------------------------------------
+\subsection{Boosting}
+you will try to compute the \textbf{outputs} of many "weaks"\textcolor{ae}{(Model with high biais, slightly better than random guess for class}. Models to produce a powerfull ensemble of methods.
+% -------------------------------- Stoching ---------------------------------------
+\subsection{Stoching}

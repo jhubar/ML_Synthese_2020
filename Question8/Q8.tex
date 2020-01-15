@@ -1,0 +1,27 @@
+\section{K-Nearest Neighbors}
+
+%------------------------------------------------------- 1-NN algorithm -------------------------------------------------------
+\subsection{1-NN algorithm}
+\textbf{Method}: 
+\begin{enumerate}
+    \item you define a "\textcolor{blue}{Distance measure}" trying to infer "\textcolor{blue}{proximity}" btw object:\\
+    \example : Euclidian distance 
+    \textcolor{red}{$$d_a(0,0')= (a(0)-a(0)')  (a(0)-a(0'))^T = \sum_{i=1}^N(a_i(0)-a_i(0'))^2$$}
+    \item you will define the "Nearest Neighbor"
+    $$NN_a(LS,o) = \textrm{argmin}_{o' \in LS } d_a(0,0')$$
+    \item you will extrapolate the corresponding output
+    $$\hat{y}NN(o) = y(NN_a(LS,o)$$
+\end{enumerate}
+\textbf{Proêrties}:
+\begin{enumerate}
+    \item Complexity (Time)
+    \begin{itemize}
+        \item Fast trainsing $\rightarrow$ only storage of "LS" (n x N)
+        \item Slow testing $\rightarrow$ "N" distannces computation => O(n* N)
+    \end{itemize}
+    \item Accuracy
+    \begin{itemize}
+        \item suboptimal: \textcolor{red}{Exceplt}, for det problems
+        \item strong dependance on attribute choices
+    \end{itemize}
+\end{enumerate}

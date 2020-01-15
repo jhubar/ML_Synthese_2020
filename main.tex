@@ -1,0 +1,295 @@
+
+\documentclass[a4paper, 12pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % FIXME maybe 
+\usepackage{placeins}
+\usepackage[top=2.2cm, bottom=2.2cm, left=2.0cm, right=2.0cm]{geometry} % margins
+\usepackage[justification=centering]{caption}
+\captionsetup[table]{name=Tab.}
+\usepackage[englishb]{babel} %language
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{color}    %colorful text
+\usepackage{ulem}
+\usepackage{steinmetz} % permet d'utiliser \phase{}
+\usepackage{gensymb} % permet d'utiliser le symbole ° avec \degree
+\usepackage{colortbl} % permet de colorer des cellules de tableaux
+\definecolor{lightgray}{gray}{0.85} % création couleur gris clair
+\usepackage[toc,page]{appendix} % ajouté par moi : permet l'utilisation de la commande \begin{appendices} pour faire les annexes
+\renewcommand{\appendixpagename}{Annexes} % pour afficher Annexes en français
+\renewcommand{\appendixtocname}{Annexes} % pour afficher Annexes en français
+\usepackage{multirow} % permet de fusionner des cellules d'un tableau
+\usepackage{diagbox} % permet d'utiliser la commande \diagbox pour diviser diagonalement une cellule d'un tableau
+\usepackage{chemfig}
+\usepackage{hhline}
+\usepackage{eurosym}
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage{amsmath, amssymb}  % for better maths
+\usepackage{bbold}
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array}    % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig}   % make it possible to include more than one captioned figure/table in a single float
+\usepackage{eurosym}
+\usepackage{subfigure}
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{appendix}
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{secnumdepth}{3}
+\renewcommand{\figurename}{\textsc{Figure}}
+
+% Table of Contents' look
+\usepackage[nottoc,notlof,notlot]{tocbibind}   % Put the bibliography in the ToC (table of contents)
+\usepackage[titles,subfigure]{tocloft}         % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+% These packages will all be used one day or another...
+\usepackage{tabularx}
+\usepackage[hyphens]{url} % option hyphnens to break the url into multiple lines if needed
+\usepackage[colorlinks=true,urlcolor=cyan,linkcolor= blue]{hyperref}
+%\usepackage{fullpage}
+\usepackage{epstopdf}
+% Be able to include some source code! 
+\usepackage{listings} % pour insérer du code
+\usepackage{bm} % avoir les lettre grecques en gras
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\usepackage[export]{adjustbox}
+
+\lstset{commentstyle=\color{red},keywordstyle=\color{black},
+showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{language=R}}{}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.\ #1}{}}
+\lstset{language=R} % Set R to default language.
+
+
+\lfoot{\footnotesize University of Liège}
+\cfoot{\footnotesize -\space\thepage\space-}
+\rfoot{\footnotesize Machine learning}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\renewcommand{\bf }{\mathbf}
+\newcommand{\Biais}{\textcolor{teal}{\textbf{Biais }}}
+\newcommand{\biais}{\textcolor{teal}{\textbf{biais }}}
+\newcommand{\variance }{\textcolor{red}{\textbf{variance }}}
+\newcommand{\Variance }{\textcolor{red}{\textbf{Variance }}}
+\newcommand{\noise }{\textcolor{blue}{\textbf{noise }}}
+\newcommand{\reglin }{\textbf{regression linéaire }}
+\newcommand{\linreg }{\textbf{linear regression }}
+\newcommand{\regtr }{\textbf{Regression Trees }}
+\definecolor{ao}{rgb}{0.0, 0.5, 0.0}
+\definecolor{red.g}{rgb}{0.91, 0.29, 0.27}
+\definecolor{blue.g}{rgb}{0.2, 0.75, 0.89}
+\definecolor{vert.g}{rgb}{0.58, 0.96, 0.51}
+\newcommand{\algo }{\textbf{algorithm}}
+\newcommand{\example}{\textcolor{ao}{\textbf{example }}}
+\newcommand{\Example}{\textcolor{ao}{\textbf{Example }}}
+\newcommand{\exemple}{\textcolor{ao}{\textbf{exemple }}}
+\newcommand{\Exemple}{\textcolor{ao}{\textbf{Exemple }}}
+
+\newcommand{\Advantages}{\textcolor{ao}{\textcolor{ao}{\textbf{Advantages }}}}
+\newcommand{\Drawbacks}{\textcolor{red}{\textcolor{ao}{\textbf{Drawbacks}}}}
+
+
+\date{\today}
+
+%-------------------------------------------------------------
+%                 OPTION D'INSERTION DE CODE.
+%-------------------------------------------------------------
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+  backgroundcolor=\color{white},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{mygreen},
+  deletekeywords={...},            
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  frameround= t t t t,
+  keepspaces=true,
+  keywordstyle=\color{blue},
+  language=Matlab,
+  otherkeywords={*,switch, case, otherwise},
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{mygray},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{mymauve},
+  tabsize=2,
+  xleftmargin = 5pt,
+  inputpath = Functions
+}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+
+\usepackage{bbold}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+
+\usepackage{indentfirst}
+%-------------------------------------------------------------
+%               FIN OPTION D'INSERTION DE CODE.
+%-------------------------------------------------------------
+
+\newcommand{\q}{\tilde{q}}
+\newcommand{\qv}{\mathbf{q_v}}
+\newcommand{\qvt}{\mathbf{\q_v}}
+\newcommand{\matlab}{\textsc{Matlab }}
+\newcommand{\vars}[1]{\textbf{\textcolor{blue}{#1}}}
+\usepackage{newunicodechar}
+\newcommand{\ct}{\textbf{Classification Trees}}
+\newcommand{\Dt}{\textbf{Decision trees}}
+\newcommand{\dt}{\textbf{decision trees}}
+\newcommand{\rt}{\textbf{regression trees}}
+\newcommand{\Rt}{\textbf{Regression trees}}
+\newcommand\Warning{%
+ \makebox[1.4em][c]{%
+ \makebox[0pt][c]{\raisebox{.1em}{\small!}}%
+ \makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}%
+
+\newunicodechar{⚠}{\Warning}
+\usepackage{multicol}
+\newcommand{\esp}{\text{ }}
+
+\usepackage{tikz}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+	\begin{center}
+	%
+	~~\\
+		% ~~\\
+		 % ~~\\
+		 
+		
+		{\fontsize{20}{20}\selectfont
+		\textsc{ELEN062-1} \\
+		%\vspace{0.5cm}
+		
+		\textsc{Machine learning }\\
+		\vspace{0.3cm}
+	    Pierre Geurts and Louis Wehenkel
+		\vspace{2cm}
+		
+	\begin{figure}
+	    \centering
+	    \includegraphics[width=16cm]{entete.png} 
+	\end{figure}
+	
+	
+	
+		
+    %\begin{figure} 
+    %\begin{minipage}[l]{.46\linewidth}
+    %    \includegraphics[width=7cm, left]{ulg.jpg}
+    %\end{minipage} 
+    %\begin{minipage}[r]{.46\linewidth}
+    %    \includegraphics[width=5cm, right]{facsa.png}
+    %\end{minipage}
+    %\end{figure}
+
+		\vspace{0.1cm}
+		
+		\hrulefill
+		
+		\vspace{0.2cm}
+		{\fontsize{30}{25}\selectfont \textbf{Synthèses}\\}
+		\vspace{0.2cm}
+		
+		
+		% chiffre 1 : taille, chiffre 2 : interligne
+
+		\hrulefill
+
+		\vspace{1cm}
+~~\\
+		{\fontsize{20}{25}\selectfont
+		Hubar Julien \\
+		\vspace{3.1cm}
+		\textit{Master 1 Data science Engineering}\\
+		\textit{Faculty of Applied Sciences}
+	   	
+	  \vspace{2cm}
+	  
+		Academic years 2019-2020}
+		}
+	\end{center}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+\input{Question1/Q1.tex}
+\input{Question2/Q2.tex}
+\input{Question3/Q3.tex}
+\input{Question4/Q4.tex}
+\input{Question5/Q5.tex}
+\input{Question6/Q6.tex}
+\input{Question7/Q7.tex}
+\input{Question8/Q8.tex}
+\input{Question9/Q9.tex}
+\input{Question10/Q10.tex}
+\input{Question11/Q11.tex}
+\input{Question12/Q12.tex}
+\input{Question13/Q13.tex}
+\input{Question14/Q14.tex}
+\input{Question15/Q15.tex}
+\input{Question16/Q16.tex}
+
+\appendix
+\begin{appendices}
+\input{appendix.tex}
+\end{appendices}
+
+
+
+
+\end{document} 

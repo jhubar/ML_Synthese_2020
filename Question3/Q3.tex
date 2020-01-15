@@ -1,0 +1,139 @@
+\section{Model evaluation}
+%-------------------------------------------- Resubstitution error -------------------------------
+\subsection{Resubstitution error}
+Fit the model on a traising set and use the same traising set for model.
+
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+                                                        \item \textbf{Fast} and \textbf{simple}  
+                                                 \end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+                                                        \item \textbf{High-Biais} due to overtting 
+                                                        \item (model may be good on the TS but not on the whole distribution)
+                                                 \end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+    
+%-------------------------------------------- Test set Method -------------------------------
+\subsection{Test set Method}
+Randomely divide the dataset into 2 part: (\textbf{LS} 70\%, \textbf{TS} 30\%)
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+                                                        \item \textbf{Fast} and \textbf{simple} 
+                                                        \item \textbf{Low bias}
+                                                 \end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+                                                        \item \textbf{Error is not reliable}
+                                                        \item (if Dataset is to small)
+                                                 \end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+    
+        
+%-------------------------------------------- K-fold cross validation Methods -------------------------------
+\subsection{K-fold cross validation methods}
+Randomly divides the dataset into k subsets. Them, for each subset :\\
+\begin{enumerate}
+    \item Learn a model on objects that are not in the subset
+    \item Compute prediction on object that are in the subset
+    \item Compute error.
+\end{enumerate}
+Them, report mean error over all the subsets.\\
+\textcolor{red}{\textbf{Leave-one-out method}: N-fold cross validation where "N" is size of the dataset.}
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+                                                        \item \textbf{Unbiased} (k=N)
+                                                        \item \textbf{Low variance} (k<N)
+                                                        \item \textbf{Fasten} (5 to 10 models to main) (k<N)
+                                                 \end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+                                                        \item \textbf{slow} (k = N (N models to train))
+                                                        \item \textbf{High variance} (Highly dependent to dataset.
+                                                        \item Potentially biased (k = 5,10)
+                                                  \end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+    
+%-------------------------------------------- Boostrap Method -------------------------------
+\subsection{Boostrap Method}
+Randomly into the "k" subset in wich the dataset has been divided.\\
+Boostrap error estimate:
+\begin{enumerate}
+    \item For i = 1 to k : 
+    \begin{itemize}
+        \item Learn a model on a boostrap sample Bi.
+        \item compute the resubtitution error for each models
+    \end{itemize}
+    \item Compute the average over all model.
+\end{enumerate}
+Them, report mean error over all the subsets.\\
+\textcolor{red}{\textbf{Leave-one-out method}: N-fold cross validation where "N" is size of the dataset.}
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+                                                        \item \textbf{low variance}
+                                                 \end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+                                                        \item \textbf{Biais due to non distinst instances in a sample}
+                                                        \item \textbf{Slow} 
+                                                  \end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+    
+    \subsection{Model evaluation}
+    \textbf{Large dataset} used test set method: randomly divide your data set in 3 points: LS VS and TS
+      \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Large dataset}     &  \begin{enumerate}
+                                                        \item Train on LS your different models.
+                                                        \item select the best based on its perfo on VS
+                                                        \item retair on \textbf{ls} + \textbf{vS}
+                                                        \item test it on \textbf{TS} : performance assesment
+                                                        \item final model 
+                                                 \end{enumerate}\\ \hline 
+    \rowcolor{red.g} \textbf{small dataset}       &  \begin{enumerate}
+                                                        \item \textbf{Divided the dataset} into k folds
+                                                        \item \textbf{Learning} set  
+                                                        \item train 
+                                                        \item test performance
+    
+                                                  \end{enumerate}\\ \hline
+                                                      \end{tabular}
+    \end{center}
+    \end{table}
+    
+      \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{15em}|}
+    \hline
+     \rowcolor{vert.g} \textbf{small dataset}     &  \begin{enumerate}
+                                                        \item divided dataset into 2 part
+                                                        \item train and used k-fold cv on the first one to choose the best model
+                                                        \item Test on test set to asses perfo
+                                                 \end{enumerate}\\ \hline 
+    \end{tabular}
+    \end{center}
+    \end{table}
+    

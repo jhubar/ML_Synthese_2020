@@ -1,0 +1,82 @@
+\section{Model evalution criteria}
+\subsection{Error rate}
+Build contagency table recording the number of TN,TP,FP,FN
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{5em}| m{5em}|}
+    \hline
+    \centering
+    \cellcolor{vert.g} \textbf{TP} &  \cellcolor{red.g}\textbf{FN} \\ \centering \hline 
+    \centering
+    \cellcolor{red.g} \textbf{FP}  & \cellcolor{vert.g} \textbf{TN}
+    \end{tabular}
+    \end{center}
+\end{table}
+
+
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{5em}| m{8em}|}
+    \hline
+    \centering
+    \rowcolor{vert.g} \textbf{Error rate} & \begin{itemize}
+        \item $\frac{\textbf{FN+FP}}{\textbf{N+P}}$ 
+    \end{itemize}  \\ \hline 
+    \centering
+    \rowcolor{red.g} \textbf{Accuracy}  &  \begin{itemize}
+        \item \textbf{1-Error rate}
+    \end{itemize}
+    \end{tabular}
+    \end{center}
+\end{table}
+where N+P is the size of test set.
+
+\textbf{Limitation}:
+\begin{itemize}
+    \item No information on how the error are distribued accross classes
+\end{itemize}
+\subsection{Sensitivity \& specificity}
+
+\begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{5em}| m{18 em}|}
+    \hline
+    \centering
+    \rowcolor{vert.g} \textbf{Sensitivity} & \begin{itemize}
+        \item $\textbf{TP/P}$ 
+    \end{itemize}  \\ \hline 
+    \centering
+    \rowcolor{red.g} \textbf{specificity}  &  \begin{itemize}
+        \item $\textbf{TN}}{\textbf{TN+FP} = 1-FP/N$
+    \end{itemize}
+    \end{tabular}
+    \end{center}
+\end{table}
+
+
+
+
+
+
+\section{Arbres de décision et de régression}
+Un arbre de décision est un arbre où les noeuds intérieurs test un des attributs de l'objet d'entrée. Les branches corresponent à une valeur possible de l'attribut et les noeuds sont étiqueté d'une classe.\\
+L'apprentissage de l'arbre se fait en deux étapes: 
+
+\begin{enumerate}
+    \item \textbf{Construction top-down}: Prendre le noeud racine traiter les attributs un par un et calculer le score pour chaque division, déterminer le meilleur attribut et la meilleur division, diviser le noeud.\\\\
+    \textbf{En classification}:
+    $$\textrm{Score} = \frac{2I_c^T(S)}{H_c(S) + H_T(S)}$$
+    où\\\\
+    $H_c(S) = -\sum_{c_i \in C} \textrm{\bigg{(}} \frac{N_{c_i}(S)}{N(S)} \log_2 \textrm{\bigg{(}} \frac{N_{c_i}(S)}{N(S)} \textrm{\bigg{)}}\textrm{\bigg{)}}\textrm{, est l'estimation de l'entropie(Shannon),} $\\\\
+    $ H_T(S) = H_2 \textrm{\bigg{(}} \frac{N_{part1}(S)}{N(S)} \textrm{\bigg{)}}\textrm{, est l'entropie de la division,} $\\\\
+    et $I_c^T(S) = H_c(S) - \sum_{i=1}^{|part|}\frac{N_{part_i}}{N(S)}H_c(S_{part_i}) $, est le gain de la division.\\\\\\
+    \textbf{En régression}:\\
+    Le calcul d'entropie est remplacé par celui de la variance. 
+    $$\textrm{Score} = \frac{\Delta Var_y^T}{Var_y(S)}$$
+    où\\\\
+    $Var_y = N(S)^{-1}\sum_{O \in S}[y(O)-N(S)^{-1} \sum_{O\in S} y(O)]^2}$\\\\
+    et $Var_y_T = Var_y (s) - \sum_{i=1}^{|part|} \frac{N_{part_i(S)}}{N(s)}Var_y(S_{part_i})$\\
+    \item \textbf{Etalage bottom-up}: Sert à éviter le sur-apprentissage(\textbf{overfitting}) et simplifier l'interprétation, en supprimant des parties de l'arbre inutile)
+\end{enumerate}
+

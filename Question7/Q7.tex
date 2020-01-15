@@ -1,0 +1,21 @@
+\section{Linear regression Model}
+It's a learning \algo that will: given numerical inputs,try to approximate tue output by:
+\textcolor{blue}{$$\hat{y}(0) = w_0 + \sum_{i = 1}^{n} w_i \phi (a_i(0)$$}
+thus, the learning \algo will need to choose the $w_0,w_1,...w_n$ parameters. So that model fot well the \textbf{LS} \textcolor{red}{and} has good generalization to unseen data objects. 
+
+%-------------------------------------------- Least mean square error solution --------------------------------------------
+\subsection{Least mean square error solution}
+we will pich the set parameters minimizing the MSE.\\\\
+\textcolor{blue}{\textbf{Hypothesis}}:
+\begin{itemize}
+    \item $a_0(0) = 1, \forall 0 \rightarrow$ \textcolor{red}{This is the "\biais value"}\\\\
+    \textcolor{ao}{"$W_0$ will thus allow you to connect the \biais of the model.}
+    \item $\underline{a}'(0_i)$ = (a_0(0_i), a_1(0_i), ... a_n(0_i))^T$
+    \item $\underline{w}'$ = (w_0,w_1, ... w_n)^T$
+\end{itemize}
+Thus, we have
+\textcolor{blue}{$$SE = (y(o_i)-\hat{y}{(o_i))^2 = ((y|0_i)) - \underline{w}'^T \underline{a}'(o_i))^2$$}
+\textcolor{blue}{$$TSE = \sum_{i=1}^n (y(o_i)- \underline{w}'^T \underline{a}'(o_i))^2}$$}
+\textcolor{blue}{$$= (\underline{y}- A'^T \underline{w}')^T(\underline{y}- A'^T \underline{w}')$$}
+
+%------------------------------- Regularization  -------------------------------

@@ -1,0 +1,13 @@
+\section{Variance Reduction technique}
+
+First, as we know $\Biais$ and $\variance$ are inversely proportional. Reducing $\variance$ will increase the $\Biais$.\\
+$\Variance$ Reduction Technique: Reduce the ability of the algorithm to fit the learning sample.
+\begin{enumerate}
+    \item \textbf{Prunning}: Reduce the model complexity.\\
+    $\Example$: DT pruning: will try to remove sections of the tree that provide little power to classify instances.
+    \item \textbf{Early stopping}: Stop the search for optimal fit to LS before reaching optimun.
+    \item \textbf{Regularization}; Reduce the hypothesis space (the number of candicate models) in wich you will search.\\
+    $\Example$: Neural networks weights decay $\rightarrow$ penalize height weight
+    \item \textbf{Ensemble Methodes}: combine the predictions of several models buit with learning algorithms mode and order models:\\
+    $\Example$: Bagging, Random Forst, Boosting, ...\\
+\end{enumerate}

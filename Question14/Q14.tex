@@ -1,0 +1,96 @@
+\section{Feature selection}
+\textbf{Goal}: reduce the number of features used by the learning algorithm on order to: \begin{enumerate}
+    \item Avoid overfiiting (eviter l'overfiiting): \textcolor{ae}{some feature might be "irrelevant" for the problem}, \textcolor{red}{fittingthem = overfitting}}
+    \item Improve interpretability 
+    \item provide faster and more cost-eff model
+    \item reduce computing time: ⚠  if fast feature selection
+\end{enumerate}
+
+There are two type of feature selection techniques.
+\begin{enumerate}
+    \item \textbf{Features selection} : Find a small or smallest subset of features that maximize accuracy.
+    \item \textbf{Features ranking}: sort the varibles according to ther relevance at predicting output. 
+\end{enumerate}
+
+\subsection{Filter techniques}
+Filter techniques is a priori selection of the varibles. Independent of learning algo.
+\textbf{Method}\begin{enumerate}
+    \item Associate a relevance score to cach variable : "Score explained"
+    \item Remove low-scoring Features \textcolor{ao}{Treshold neeeded}
+\end{enumerate}
+There are two type of "\textbf{scoring}"
+\begin{enumerate}
+    \item \textbf{Univariate scoring}: score each feature independdently. \Example stat test (t-test,..)
+    \item \textbf{Multivariate scoring}: score features dependently. Some features are useless alone \textbf{But} with others they perfectly representthe LS. 
+\end{enumerate}
+
+
+
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{25em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+    \item Univariate fitten tech : \textbf{Fast \& scalable}
+    \item independent of the learning \algo
+\end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+    \item Independant of te learning algo: can't be totally efficient.
+    \item Univariate: Ignore feature dependecie.
+    \item Multivariate: \textbf{slower} than univariate.
+\end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+
+
+\Example Multivariate scoring: Decision Trees,...
+%--------------------------------- Embedded Techniques --------------------------
+\subsection{Embedded Techniques}
+Some learning algorithms embedded some feature selection: \textbf{Search for an optimal subset} of features is build into the LS.\\
+\Example:
+\begin{enumerate}
+    \item Decision tree node spliting: feature selection techninques 
+    \item Weight in svm Model
+\end{enumerate}
+
+
+
+  \begin{table}[!h]
+    \begin{center}
+    \begin{tabular}{| m{8em}| m{25em}|}
+    \hline
+    \rowcolor{vert.g} \textbf{Advantages}     &  \begin{itemize}
+    \item computationnaly efficient. 
+    \item Well integrated in the learning \algo 
+    \item Multivarite 
+\end{itemize}\\ \hline 
+    \rowcolor{red.g} \textbf{Drawbacks}       &  \begin{itemize}
+    \item learning \algo specific
+\end{itemize}\\ \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+%--------------------------------- wappen technique --------------------------
+\subsection{wappen technique}
+Find a subset of features that maximizes the "\textbf{quality of the model"induced by the learning algorithm}
+
+
+%--------------------------------- Selection Biais --------------------------
+
+% ------------------------------ Selection biais ------------------------------
+\subsection{Selection \biais}
+\textbf{Protocol}:
+\begin{enumerate}
+    \item Divide LS into 10 folds
+    \item  For i = 1 to 10: 
+    \begin{enumerate}
+        \item Remove the $i^{th}$ fold from LS $\to LS_i$
+        \item select top 20 variables from LS
+        \item learn model using the 20 varibles on LS 
+        \item Test model on the $i^{th}$ fold 
+    \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,28 @@
+\section{Clustering Methods}
+Unsupervised learning: Try to find any regularities in a dataset without any guidance about inputs or outputs. there are 3 families of problems. 
+\begin{itemize}
+    \item \textbf{Clustering}: Find a natural groups of sample\varibles
+    \begin{enumerate}
+        \item \textbf{Clustering rows} : groups similar obs. 
+        \item \textbf{Clustering coloùns}:groups similar var. 
+        \item \textbf{Bi-clustering} on two-way clustering: group objects that are similar considering a subset of varibles.
+    \end{enumerate}
+    \item \textbf{Dimentionnaly reduction}
+    \item \textbf{Density estimation} : Determine the distribution of data cithin the input space
+\end{itemize}
+When we use the \textbf{clustering analysis}, there are \textbf{two} components:
+\begin{itemize}
+    \item \textbf{Distance measure}: similarity/Distance between two objects ao attributes
+    \item \textbf{Clustering algotithms} : Produce to minimize distance of objects within groups and/or maximize distances between groups.
+\end{itemize}
+
+\subsection{Distance Measure}
+Similarities bwt objects or attributes. Let's introduce two vector (\textbf{a},\textbf{b})
+\begin{itemize}
+    \item \textbf{Euclidian distance}: $d_E (\textbf{a},\textbf{b}) = \sqrt{\sum_i (a_i - b_i})^2}$ \textcolor{ao}{(Measure average difference between elements)}
+    \item \textbf{Manhattan distance}: $d_m (\textbf{a},\textbf{b}) = \sum_i |a_i - b_i|$ \textcolor{ao}{(Measure vaerage difference between elements in a "\textbf{robust way}")}
+    \item \textbf{Correlation distance}  : $d_C (\textbf{a},\textbf{b}) = 1- p $ \textcolor{ao}{(Measure difference with respect to trends)}
+    \begin{itemize}
+        \item "p" is the Pearson correlation of two vectors.
+    \end{itemize}
+\end{itemize}

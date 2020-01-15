@@ -1,0 +1,32 @@
+\section{Definition}
+\subsection{\textcolor{red}{Decision tree prunning}}
+\textbf{Pruning} is a technique in machine learning and search algorithms that reduces the size of decision trees by removing sections of the tree that provide little power to classify instances. Pruning reduces the complexity of the final classifier, and hence improves predictive accuracy by the reduction of overfitting.
+\subsection{\textcolor{red}{Impurity}}
+l'impureté de Gini est une mesure de la fréquence à laquelle un élément choisi au hasard dans l'ensemble serait incorrectement étiqueté s'il était étiqueté au hasard selon la distribution des étiquettes dans le sous-ensemble. 
+
+\subsection{\textcolor{red}{entropie de Shannon}}
+L'entropie de Shannon, due à Claude Shannon, est une fonction mathématique qui, intuitivement, correspond à la quantité d'information contenue ou délivrée par une source d'information. Cette source peut être un texte écrit dans une langue donnée, un signal électrique ou encore un fichier informatique quelconque (collection d'octets).
+Du point de vue d'un récepteur, plus la source émet d'informations différentes, plus l'entropie (ou incertitude sur ce que la source émet) est grande. Ainsi, si une source envoie toujours le même symbole, par exemple la lettre 'a', alors son entropie est nulle, c'est-à-dire minimale. En effet, un récepteur qui connaît seulement les statistiques de transmission de la source est assuré que le prochain symbole sera un 'a'. Par contre, si la source envoie un 'a' la moitié du temps et un 'b' l'autre moitié, le récepteur est incertain de la prochaine lettre à recevoir. L'entropie de la source dans ce cas est donc non nulle (positive) et représente quantitativement l'incertitude qui règne sur l'information émanant de la source. L'entropie indique alors la quantité d'information nécessaire pour que le récepteur puisse déterminer sans ambiguïté ce que la source a transmis. Plus le récepteur reçoit d'information sur le message transmis, plus l'entropie (incertitude) vis-à-vis de ce message décroît. En particulier, plus la source est redondante, moins elle contient d'information. En l'absence de contraintes particulières, l'entropie est maximale pour une source dont tous les symboles sont équiprobables.
+\subsection{\textcolor{red}{Prunning Algorithm}}
+\textbf{English}: Pruning is a technique in machine learning and search algorithms that reduces the size of decision trees by removing sections of the tree that provide little power to classify instances. Pruning reduces the complexity of the final classifier, and hence improves predictive accuracy by the reduction of overfitting.\\\\
+\textbf{French}: Le Prunning est une technique de machine learning et d'algorithmes de recherche qui réduit la taille des arbres décisionnels en supprimant les sections de l'arbre qui fournissent peu de puissance pour classer les instances. Le prunning réduit la complexité du classificateur final, et améliore donc la précision prédictive en réduisant l'over-fitting.
+
+\subsection{\textcolor{red}{Bagging}}
+Le mot \textbf{Bagging} est une contraction de \textbf{Bootstrap Aggregation}. Le bagging est une technique utilisée pour améliorer la classification notamment celle des arbres de décision, considérés comme des « classifieurs faibles », c’est-à-dire à peine plus efficaces qu’une classification aléatoire.\\
+
+En général, le \textbf{bagging} a pour but de réduire la $\variance$ de l’estimateur, en d’autres termes de corriger l’instabilité des arbres de décision (le fait que de petites modifications dans l’ensemble d’apprentissage entraînent des arbres très différents). Pour ce faire,  le principe du bootstrap est de créer de « nouveaux échantillons » par tirage au hasard dans l’ancien échantillon, avec remise. L’algorithme, par exemple l’arbre de décision, est entraîné sur ces sous-ensembles de données. Les estimateurs ainsi obtenus sont moyennés (lorsque les données sont quantitatives, cas d’un arbre de régression) ou utilisés pour un « vote » à la majorité (pour des données qualitatives, cas d’un arbre de classification).  C’est la combinaison de ces multiples estimateurs « indépendants » qui permet de réduire la variance. Toutefois, chaque estimateur est entrainé avec moins de données. En pratique, la méthode de bagging donne d’excellents résultats (notamment sur les arbres de décision utilisés en « forêts aléatoires »).
+
+\subsection{\textcolor{red}{Clustering}}
+Group a collection of objects into substeds. The "\textbf{clusters}" such that citin cach clusters data are more related to one another than objects assigned to diiferent clusters.
+
+\subsection{\textcolor{red}{L'impurité de gini}}
+L'impureté de Gini est une mesure de la fréquence à laquelle un élément choisi au hasard dans l'ensemble serait incorrectement étiqueté s'il était étiqueté au hasard selon la distribution des étiquettes dans le sous-ensemble. L'impureté de Gini est limitée par 0, 0 se produisant si l'ensemble de données ne contient qu'une seule classe. 
+
+%--------------------------- Boosting---------------------------------------------------
+\subsection{\textcolor{red}{Le boosting}}
+le \textbf{Boosting} est une méthode adaptative de correction de l'erreur. A chaque étape, on à la construction d'un modèle se basant sur le modèle précedant, on en calcule l'erreur.L'idée est donc de combiner beaucoup de modèles qui sous-évaluent les données pour produire un modèle plus puissant.
+
+%--------------------------- Extra tree ---------------------------------------------------
+\subsection{\textcolor{red}{L'extra trees}}
+\textbf{L'extra trees} consiste a construire un ensemble d'arbre complétement développé indépendamment généré dans lesquelles le choix des attributs des noeuds internes se fait de manière aléatoire. Pour K et $n\_{min}$ donné, à chaque étape, on prend un ensemble de K attributs dont on défini $t_i = a_{i_c} \in ]min(a_i); mac(a_i)]$ et on en garde que celui maximisant le score. On considère que le noeud est une feuille si $|S| < n_{min}$ ou que tous les attributs ou la sortie sont constant dans S. Agrégation des arbres: par moyenne des sorties (régression) ou par majorité de vote (classificaiton).\\
+Cette méthode permet également lka réduction de la variance sans trop augmenter le biais.
